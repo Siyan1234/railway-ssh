@@ -1,4 +1,4 @@
-FROM ghcr.io/ashwinstr/ux-venom-docker:latest
+FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update -y > /dev/null 2>&1 && apt upgrade -y > /dev/null 2>&1 && apt install locales -y \
 && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
