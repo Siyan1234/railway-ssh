@@ -18,7 +18,6 @@ xfonts-cyrillic \
 tightvncserver \
 fonts-ipafont-gothic && \
 expect -c 'set timeout 3;spawn /usr/bin/vncpasswd;expect "*?assword:*";send -- "selenium\r";expect "*?erify:*";send -- "selenium\r";expect "*?view-only password*";send -- "n\r";send -- "\r";expect eof' && \
-touch /root/.xsession && \
 apt-get remove --purge -y expect && \
 apt-get autoremove -y && \
 apt-get clean && \
