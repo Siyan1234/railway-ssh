@@ -22,7 +22,7 @@ RUN pip3 install chromedriver-py
 
 RUN wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 
-ENV DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AbUR2VPBcp3aDTPvU96g6IGjRx-pkSxh8b5YCj4kWFaHaXtFctxTywLyShecQ_WpAB9QoQ" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
+RUN DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AbUR2VPBcp3aDTPvU96g6IGjRx-pkSxh8b5YCj4kWFaHaXtFctxTywLyShecQ_WpAB9QoQ" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
 
 RUN apt-get install git curl python3-pip ffmpeg -y
 
