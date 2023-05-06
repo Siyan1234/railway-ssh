@@ -1,4 +1,4 @@
-FROM ghcr.io/ashwinstr/ux-venom-docker:latest
+FROM Ubuntu:latest
 
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
@@ -22,19 +22,26 @@ RUN pip3 install chromedriver-py
 
 RUN wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 
-RUN DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AbUR2VPBcp3aDTPvU96g6IGjRx-pkSxh8b5YCj4kWFaHaXtFctxTywLyShecQ_WpAB9QoQ" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
-
 RUN apt-get install git curl python3-pip ffmpeg -y
 
-# Cloning-Repo
-RUN git clone https://github.com/DarkSickXD/yashhelp
-
-# Setting up Working Directory
-WORKDIR yashhelp
-
-RUN python3 -m pip install --upgrade pip wheel setuptools &&\
-    python3 -m pip install chromedriver-py
-
-
-# Start
-CMD ["sh","start"]
+RUN apt update -y > /dev/null 2>&1 && apt upgrade -y > /dev/null 2>&1 && apt install locales -y \
+&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
+ARG ngrokid
+ARG Password
+ENV Password=${Password}
+ENV ngrokid=${ngrokid}
+RUN apt install ssh wget unzip -y > /dev/null 2>&1
+RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip > /dev/null 2>&1
+RUN unzip ngrok.zip
+RUN echo "./ngrok config add-authtoken ${ngrokid} &&" >>/1.sh
+RUN echo "./ngrok tcp 22 &>/dev/null &" >>/1.sh
+RUN mkdir /run/sshd
+RUN echo '/usr/sbin/sshd -D' >>/1.sh
+RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
+RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+RUN echo root:${Password}|chpasswd
+RUN service ssh start
+RUN chmod 755 /1.sh
+EXPOSE 80 8888 8080 443 5130 5131 5132 5133 5134 5135 3306
+CMD  /1.sh
