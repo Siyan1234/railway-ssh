@@ -7,14 +7,22 @@
 ## Note:
 * Read this Before Deploy : [Term Of Service Railway](https://railway.app/legal/fair-use)
 
-## Deploy Now!
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/O1H6fD?referralCode=49-ICI)
+## Deploy Now 🚀
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/nUq8Je?referralCode=49-ICI)
 
 ## Update 🔥
 * Add Stupid Wiki [Here](https://github.com/itzYoungHazn/railway-ssh/wiki)
-* I Will Add More Later ((
+* Add Instant OS
+
+## List Os
+* [Debian](https://github.com/itzYoungHazn/railway-ssh/tree/debian-latest)
+* [Kali](https://github.com/itzYoungHazn/railway-ssh/tree/Kali-linux)
+* [Fedora](https://github.com/itzYoungHazn/railway-ssh/tree/fedora-latest)
+* [Centos](https://github.com/itzYoungHazn/railway-ssh/tree/centos-latest)
+
 
 ## Found Bug 🐛?
-Dm Me! [Contact](t.me/@ItzMehHaznLol)
+* Telegram [Contact](http://t.me/@ItzMehHazn)
+* Whatsapp [Contact](http://wa.me/+6281539336834)
 
 Have A Good Day 🌟
